@@ -1,4 +1,6 @@
 import React from 'react';
+import Followers from './Followers'
+
 //import logo from './logo.svg';
 import './App.css';
 
@@ -33,8 +35,14 @@ class App extends React.Component {
         <p>User data will display below.</p>
         </header>
         <section>
-          {this.state.userData.url}
-          <p>User data...</p>
+          <h2>User Info</h2>
+          <p>{this.state.userData.name}</p>
+          <p>{this.state.userData.url}</p>
+        </section>
+        <section>
+          <h2>Followers</h2>
+          {this.state.userData.followers_url ? <Followers userFollowersUrl = {this.state.userData.followers_url}/> : 'nothing to see here!'}
+          
         </section>
       </div>
     );
