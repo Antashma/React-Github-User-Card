@@ -32,17 +32,23 @@ class App extends React.Component {
         <header className="App-header">
         <h1>{this.state.userData.login}</h1>
         <img className='avatar' src={this.state.userData.avatar_url} alt={`${this.state.userData.login} avatar`}/>
-        <p>User data will display below.</p>
+        <p>{this.state.userData.html_url}</p>
         </header>
         <section>
           <h2>User Info</h2>
-          <p>{this.state.userData.name}</p>
-          <p>{this.state.userData.url}</p>
+          <h3>{this.state.userData.name}</h3>
+          <p>{this.state.userData.bio}</p>
+          <p>Joined: {this.state.userData.created_at}</p>
+          <p>Repos: {this.state.userData.public_repos}</p>
+          <p>Last Update: {this.state.userData.updated_at}</p>
+          
         </section>
         <section>
           <h2>Followers</h2>
-          {this.state.userData.followers_url ? <Followers userFollowersUrl = {this.state.userData.followers_url}/> : 'nothing to see here!'}
-          
+          <p>This user has {this.state.userData.followers} followers.</p>
+          {this.state.userData.followers_url 
+            ? <Followers userFollowersUrl = {this.state.userData.followers_url}/> 
+            : <h3>loading...</h3>}
         </section>
       </div>
     );

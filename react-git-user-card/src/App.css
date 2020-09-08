@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+header h3 {
+  color: white;
+}
+
+h3 {
+  color: #282c34;
+}
+
+.followers-container {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.follower-card img {
+  width: 200px;
+}
+
+.follower-card p {
+  font-size: x-small;
+}
