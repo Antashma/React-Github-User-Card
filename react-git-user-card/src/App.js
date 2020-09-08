@@ -10,22 +10,30 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      userData: [], 
+      userData: {}, 
     }
   }
 
   componentDidMount() {
-    console.log('sg: app.js : CDM engaged!')
+    fetch('https://api.github.com/users/antashma')
+    .then(res => res.json())
+    .then(user => {
+      this.setState({userData : user});
+      console.log('sg: app.js : user fetch data',user);
+    })
+    .catch(err => console.error(err))
   }
 
   render() {    
     return (
       <div className="App">
         <header className="App-header">
-        <h1>React Git User Fetcher App</h1>
+        <h1>{this.state.userData.login}</h1>
+        <img className='avatar' src={this.state.userData.avatar_url} alt={`${this.state.userData.login} avatar`}/>
         <p>User data will display below.</p>
         </header>
         <section>
+          {this.state.userData.url}
           <p>User data...</p>
         </section>
       </div>
